@@ -19,7 +19,8 @@
     </ul>
     <ul class="nav justify-content-end">
         <li><a class="nav-link" href="/">Login</a></li>
-        <li><a class="nav-link" href="/">Create</a></li>
+        <li><a class="nav-link" href="/">Register</a></li>
+        <li><a class="nav-link" href="/">Your profile</a></li>
         <li><a class="nav-link" href="/">FAQ</a></li>
     </ul>
 </div>
