@@ -11,7 +11,15 @@
 |
 */
 
-Route::get('/', 'loginController@index');
+//views
+Route::get('/', 'mainController@index');
+Route::get('/register', 'mainController@register');
+Route::get('/login', 'mainController@login');
 
-Route::get('/login', 'loginController@showLogin');
-Route::get('/create', 'loginController@showCreate');
+
+//user authentication
+Route::post('/login', 'loginController@login');
+Route::post('/register', 'loginController@register');
+Route::get('/logout', 'loginController@logout');
+
+

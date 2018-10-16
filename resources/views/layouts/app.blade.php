@@ -18,9 +18,14 @@
         <li class="nav">Logo</li>
     </ul>
     <ul class="nav justify-content-end">
-        <li><a class="nav-link" href="/">Login</a></li>
-        <li><a class="nav-link" href="/">Register</a></li>
-        <li><a class="nav-link" href="/">Your profile</a></li>
+        @if(Auth::check())
+            <li><a class="nav-link" href="/">Your profile</a></li>
+            <li><a class="nav-link" href="/logout">Log out</a></li>
+        @else
+            <li><a class="nav-link" href="/login">Login</a></li>
+            <li><a class="nav-link" href="/register">Register</a></li>
+        @endif
+
         <li><a class="nav-link" href="/">FAQ</a></li>
     </ul>
 </div>
