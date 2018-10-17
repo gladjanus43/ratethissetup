@@ -19,6 +19,7 @@
     </ul>
     <ul class="nav justify-content-end">
         @if(Auth::check())
+            <li><a class="nav-link" href="/create">Enter Setup</a></li>
             <li><a class="nav-link" href="/">Your profile</a></li>
             <li><a class="nav-link" href="/logout">Log out</a></li>
         @else

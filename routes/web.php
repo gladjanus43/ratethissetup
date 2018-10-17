@@ -15,11 +15,15 @@
 Route::get('/', 'mainController@index');
 Route::get('/register', 'mainController@register');
 Route::get('/login', 'mainController@login');
+Route::get('/create', 'setupController@showCreateSetup');
 
 
 //user authentication
 Route::post('/login', 'loginController@login');
 Route::post('/register', 'loginController@register');
 Route::get('/logout', 'loginController@logout');
+
+//setup
+Route::post('/create', 'setupController@createSetup');
 
 

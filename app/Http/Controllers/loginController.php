@@ -21,15 +21,20 @@ class loginController extends Controller
         if(Auth::attempt($user_data)){
             return redirect('/');
         }else{
-            //try again
+            return 'error';
         }
     }
 
     public function register(Request $request){
         $password = Hash::make($request->password);
-        $user = User::create(['name' => $request->name, 'email' => $request->email, 'password' => $password]);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $password
+        ]);
 
         Auth::login($user);
+        return redirect('/');
     }
 
     public function logOut(){
