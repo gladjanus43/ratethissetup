@@ -25,5 +25,6 @@ Route::get('/logout', 'loginController@logout');
 
 //setup
 Route::post('/create', 'setupController@createSetup');
+Route::get('/setups', 'setupController@loadSetups');
 
 

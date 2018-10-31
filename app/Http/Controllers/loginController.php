@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Setup;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Dotenv\Validator;
 use Illuminate\Support\Facades\Hash;
 
 class loginController extends Controller

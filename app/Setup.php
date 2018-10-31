@@ -10,7 +10,9 @@ class Setup extends Model
 {
     use Notifiable;
 
+    public $timestamps = false;
+
     protected $fillable = [
-        'user_id', 'title', 'description'
+        'user_id', 'title', 'description',
     ];
 }

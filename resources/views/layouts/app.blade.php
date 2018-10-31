@@ -14,8 +14,9 @@
 <body>
 
 <div class="navbar">
-    <ul>
-        <li class="nav">Logo</li>
+    <ul class="nav">
+        <li class="nav-link"><a href="/">Logo</a></li>
+        <li><a class="nav-link" href="/setups">Setups</a></li>
     </ul>
     <ul class="nav justify-content-end">
         @if(Auth::check())
