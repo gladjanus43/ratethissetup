@@ -26,5 +26,7 @@ Route::get('/logout', 'loginController@logout');
 //setup
 Route::post('/create', 'setupController@createSetup');
 Route::get('/setups', 'setupController@loadSetups');
+Route::get('/setup/{id}', 'setupController@setupDetail');
+
 
 

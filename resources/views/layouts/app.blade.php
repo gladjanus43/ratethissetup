@@ -9,11 +9,12 @@
         @yield('title')
     </title>
 
+    <link href="{{ asset('css/global.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
 
-<div class="navbar">
+<div class="navbar bg-white ">
     <ul class="nav">
         <li class="nav-link"><a href="/">Logo</a></li>
         <li><a class="nav-link" href="/setups">Setups</a></li>
@@ -33,5 +34,7 @@
 </div>
 
 @yield('content')
+
+<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
