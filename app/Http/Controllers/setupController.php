@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Setup;
 use Hamcrest\Core\Set;
 use Illuminate\Http\Request;
@@ -36,6 +37,8 @@ class setupController extends Controller
     public function setupDetail($id){
         $setup = Setup::where('id', '=', $id)->first();
 
-        return view('setup.setup_detail', compact('setup'));
+        $comments = Comment::where('setup_id', '=' , $id)->get();
+
+        return view('setup.setup_detail', compact('setup','comments'));
     }
 }

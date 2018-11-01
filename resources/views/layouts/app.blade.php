@@ -14,24 +14,25 @@
 </head>
 <body>
 
-<div class="navbar bg-white ">
-    <ul class="nav">
-        <li class="nav-link"><a href="/">Logo</a></li>
-        <li><a class="nav-link" href="/setups">Setups</a></li>
-    </ul>
-    <ul class="nav justify-content-end">
+<nav class="navbar nav bg-white ">
+    <div class="d-flex justify-content-between">
+        <a href="/">
+            <img src="{{asset('images/rts_logo.png')}}" height="50px" width="auto"/>
+        </a>
+        <a class="nav-link" href="/setups">Setups</a>
+    </div>
+    <div class="d-flex justify-content-between">
         @if(Auth::check())
-            <li><a class="nav-link" href="/create">Enter Setup</a></li>
-            <li><a class="nav-link" href="/">Your profile</a></li>
-            <li><a class="nav-link" href="/logout">Log out</a></li>
+            <a class="nav-link" href="/create">Enter Setup</a>
+            <a class="nav-link" href="/">Your profile</a>
+            <a class="nav-link" href="/logout">Log out</a>
         @else
-            <li><a class="nav-link" href="/login">Login</a></li>
-            <li><a class="nav-link" href="/register">Register</a></li>
+            <a class="nav-link" href="/login">Login</a>
+            <a class="nav-link" href="/register">Register</a>
         @endif
-
-        <li><a class="nav-link" href="/">FAQ</a></li>
-    </ul>
-</div>
+            <a class="nav-link" href="/">FAQ</a>
+    </div>
+</nav>
 
 @yield('content')
 

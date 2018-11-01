@@ -29,4 +29,5 @@ Route::get('/setups', 'setupController@loadSetups');
 Route::get('/setup/{id}', 'setupController@setupDetail');
 
 
-
+//comment
+Route::post('/comment', 'commentController@postComment');
