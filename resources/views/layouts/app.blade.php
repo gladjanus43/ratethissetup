@@ -25,12 +25,16 @@
         @if(Auth::check())
             <a class="nav-link" href="/create">Enter Setup</a>
             <a class="nav-link" href="/myprofile">Your profile</a>
+            @if(Auth::user()->is_admin == true)
+                <a class="nav-link" href="/admin">Admin</a>
+            @endif
             <a class="nav-link" href="/logout">Log out</a>
         @else
             <a class="nav-link" href="/login">Login</a>
             <a class="nav-link" href="/register">Register</a>
         @endif
-            <a class="nav-link" href="/">FAQ</a>
+
+
     </div>
 </nav>
 

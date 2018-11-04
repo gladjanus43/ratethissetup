@@ -29,4 +29,13 @@ class mainController extends Controller
 
         return view('users.your_profile', compact('user' , 'setups'));
     }
+
+    public function admin(){
+        if(Auth::user()->is_admin == true){
+            $users = User::all();
+            return view('users.admin', compact('users'));
+        }else{
+            return redirect('/');
+        }
+    }
 }

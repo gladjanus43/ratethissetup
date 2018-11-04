@@ -8,10 +8,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 
+
 class commentController extends Controller
 {
     public function postComment(Request $request)
     {
+        $validate = $request->validate([
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
         $comment = Comment::create([
             'user_id' => Auth::user()->id,
             'setup_id' => $request->setup_id,

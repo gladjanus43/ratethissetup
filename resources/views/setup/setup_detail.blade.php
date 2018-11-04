@@ -4,8 +4,10 @@
     <div class="container col-6 offset-3 mt-5">
         <div class="row d-flex justify-content-between">
             <h4>{{$setup->title}}</h4>
-            @if(Auth::user()->id == $setup->user_id)
-                <a href="">Edit</a>
+            @if(Auth::check())
+                @if(Auth::user()->id == $setup->user_id)
+                    <a href="">Edit</a>
+                @endif
             @endif
         </div>
 
@@ -48,11 +50,11 @@
                 <div class="col-3 d-flex align-items-center flex-column bg-light">
                     <img src="{{asset('storage/avatars/avatar.png')}}" width="50px" height="auto" class="mt-3">
                     <p class="mt-2">
-                        Naam comment meneer
+                        {{$comment->name}}
                     </p>
                     <p class="text-center">
                         <small>
-                            persoonlijk tekstje
+                            {{$comment->description}}
                         </small>
                     </p>
                 </div>

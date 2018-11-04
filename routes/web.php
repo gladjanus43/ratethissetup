@@ -24,11 +24,19 @@ Route::post('/register', 'loginController@register');
 Route::get('/logout', 'loginController@logout');
 Route::post('/userdetails', 'loginController@changeUserDetails');
 
+
+//Admin
+Route::get('/admin', 'mainController@admin');
+Route::get('/makeadmin/{id}', 'loginController@makeAdmin');
+Route::get('/removeadmin/{id}', 'loginController@removeAdmin');
+Route::get('/deleteuser/{id}', 'loginController@deleteUser');
+
 Route::get('/myprofile', 'mainController@myProfile');
 
 //setup
 Route::post('/create', 'setupController@createSetup');
 Route::get('/setups', 'setupController@loadSetups');
+Route::get('/setups/category/{name}', 'setupController@setupsPerCategory');
 Route::get('/setup/{id}', 'setupController@setupDetail');
 Route::post('/setupActive' , 'setupController@setupActive');
 

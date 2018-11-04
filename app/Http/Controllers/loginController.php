@@ -25,6 +25,12 @@ class loginController extends Controller
     }
 
     public function register(Request $request){
+        $validate = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
         $password = Hash::make($request->password);
         $user = User::create([
             'name' => $request->name,
@@ -40,9 +46,39 @@ class loginController extends Controller
         $user = User::find(Auth::user()->id)
             ->update([
                 'name' => $request->name,
-                'email' => $request->email
+                'email' => $request->email,
+                'description' => $request->description
             ]);
         return Redirect::back();
+    }
+
+    public function makeAdmin($id){
+        if(Auth::user()->is_admin == true){
+            User::find($id)->update([
+               'is_admin' => 1
+            ]);
+            return Redirect::back();
+        }else{
+            return Redirect::back();
+        }
+    }
+
+    public function removeAdmin($id){
+        if(Auth::user()->is_admin == true){
+            $user = User::find($id)->update(['is_admin' => 0]);
+            return Redirect::back();
+        }else{
+            return Redirect::back();
+        }
+    }
+
+    public function deleteUser($id){
+        if(Auth::user()->is_admin == true){
+            User::find($id)->delete();
+            return Redirect::back();
+        }else{
+            return Redirect::back();
+        }
     }
 
     public function logOut(){

@@ -20,6 +20,7 @@ class Setups extends Migration
             $table->string('description');
             $table->integer('upvotes')->nullable();
             $table->boolean('is_active')->default(true);
+            $table->string('category')->nullable();
         });
     }
 
