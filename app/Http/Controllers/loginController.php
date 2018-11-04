@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
 class loginController extends Controller
 {
@@ -33,6 +34,15 @@ class loginController extends Controller
 
         Auth::login($user);
         return redirect('/');
+    }
+
+    public function changeUserDetails(Request $request){
+        $user = User::find(Auth::user()->id)
+            ->update([
+                'name' => $request->name,
+                'email' => $request->email
+            ]);
+        return Redirect::back();
     }
 
     public function logOut(){

@@ -22,12 +22,19 @@ Route::get('/create', 'setupController@showCreateSetup');
 Route::post('/login', 'loginController@login');
 Route::post('/register', 'loginController@register');
 Route::get('/logout', 'loginController@logout');
+Route::post('/userdetails', 'loginController@changeUserDetails');
+
+Route::get('/myprofile', 'mainController@myProfile');
 
 //setup
 Route::post('/create', 'setupController@createSetup');
 Route::get('/setups', 'setupController@loadSetups');
 Route::get('/setup/{id}', 'setupController@setupDetail');
+Route::post('/setupActive' , 'setupController@setupActive');
 
 
 //comment
 Route::post('/comment', 'commentController@postComment');
+Route::post('/destroy', 'commentController@deleteComment');
+Route::post('/commentup', 'commentController@commentUp');
+Route::post('/commentdown', 'commentController@commentdown');

@@ -13,20 +13,26 @@
 
     <div class="container col-6 offset-3 mt-5">
         @if(Auth::check())
-            <div class="container col-6 offset-3">
-                <form method="post" action="/comment/" class="form p-3">
+            <div class="container">
+                <form method="post" action="/comment">
                     {{csrf_field()}}
-                    <input class="form-control mt-2" type="text" placeholder="Title" name="title">
-                    <input class="form-control mt-2" type="text" placeholder="Comment" name="body">
-                    <input type="hidden" value="{{$setup->id}}" name="setup_id">
-                    <input class="btn btn-primary form-control mt-2" type="submit" value="Post Comment">
+                    <input type="hidden" name="setup_id" value="{{$setup->id}}">
+                    <div class="form-group">
+                        <input class="mt-2 form-control" type="text" placeholder="Title" name="title">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Comment" name="body">
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-primary form-control" type="submit" value="Post Comment">
+                    </div>
                 </form>
             </div>
         @else
             <p>Please log in or register to post comments</p>
         @endif
 
-        <h3>Comments</h3>
+        <h3 class="mt-5">Comments</h3>
         @foreach($comments as $comment)
             <div class="row mt-4 bg-white p-4">
                 <div class="col-3 d-flex align-items-center flex-column bg-light">
@@ -47,10 +53,35 @@
                     </p>
                 </div>
                 <div class="col-2 d-flex flex-column justify-content-between">
-                    <div class="text-center btn btn-primary"><a href="" style="color: #FFFFFF;">Up</a></div>
-                    <div class="text-center btn btn-primary"><a href="" style="color: #FFFFFF;">Down</a></div>
+                    @if(Auth::check())
+                        <form action="/commentup" method="post" class="form">
+                            {{csrf_field()}}
+                            <input type="hidden" value="{{$comment->id}}" name="comment_id">
+                            <input type="submit" class="btn btn-primary form-control" value="Up">
+                        </form>
+
+                        <form action="/commentdown" method="post" class="form">
+                            {{csrf_field()}}
+                            <input type="hidden" value="{{$comment->id}}" name="comment_id">
+                            <input type="submit" class="btn btn-primary form-control" value="Down">
+                        </form>
+
+                        @if(Auth::user()->is_admin == true)
+                            <form action="/destroy" method="post" class="form">
+                                {{csrf_field()}}
+                                <input type="hidden" value="{{$comment->id}}" name="comment_id">
+                                <input type="submit" class="btn btn-danger form-control" value="X">
+                            </form>
+                        @endif
+                    @endif
+
+
                 </div>
             </div>
         @endforeach
+    </div>
+
+    <div class="container-fluid bg-dark mk-lg">
+        Footer of this website!
     </div>
 @endsection

@@ -24,7 +24,7 @@
     <div class="d-flex justify-content-between">
         @if(Auth::check())
             <a class="nav-link" href="/create">Enter Setup</a>
-            <a class="nav-link" href="/">Your profile</a>
+            <a class="nav-link" href="/myprofile">Your profile</a>
             <a class="nav-link" href="/logout">Log out</a>
         @else
             <a class="nav-link" href="/login">Login</a>

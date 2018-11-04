@@ -7,6 +7,7 @@ use App\Setup;
 use Hamcrest\Core\Set;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class setupController extends Controller
 {
@@ -37,8 +38,16 @@ class setupController extends Controller
     public function setupDetail($id){
         $setup = Setup::where('id', '=', $id)->first();
 
-        $comments = Comment::where('setup_id', '=' , $id)->get();
+        $comments = Comment::where('setup_id', '=' , $id)->orderBy('upvotes', 'desc')->get();
 
         return view('setup.setup_detail', compact('setup','comments'));
+    }
+
+    public function setupActive(Request $request){
+        Setup::find($request->id)
+            ->update([
+                'is_active' => $request->isActive
+            ]);
+        return Redirect::back();
     }
 }

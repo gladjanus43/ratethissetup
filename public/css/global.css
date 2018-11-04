@@ -24,3 +24,7 @@
     top: 35%;
     left: calc(50% - 200px);
 }
+
+.mk-lg{
+    height: 200px;
+}

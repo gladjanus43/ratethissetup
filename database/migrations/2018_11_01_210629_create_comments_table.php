@@ -18,7 +18,7 @@ class CreateCommentsTable extends Migration
             $table->text('title');
             $table->integer('user_id');
             $table->integer('setup_id');
-            $table->integer('upvotes')->nullable();
+            $table->integer('upvotes')->default(0);
             $table->text('body');
             $table->timestamps();
         });
