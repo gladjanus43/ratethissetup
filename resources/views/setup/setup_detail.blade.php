@@ -1,9 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="container col-6 offset-3 mt-5">
-        <h4>{{$setup->title}}</h4>
+        <div class="row d-flex justify-content-between">
+            <h4>{{$setup->title}}</h4>
+            @if(Auth::user()->id == $setup->user_id)
+                <a href="">Edit</a>
+            @endif
+        </div>
+
         <img src="{{ asset('storage/pictures/'. $setup->id .'.png') }}" width="100%" height="auto"/>
         <p>{{$setup->description}}</p>
     </div>
@@ -32,7 +37,12 @@
             <p>Please log in or register to post comments</p>
         @endif
 
-        <h3 class="mt-5">Comments</h3>
+        @if($comments->isEmpty())
+            <h3>Er zijn nog geen reacties</h3>
+        @else
+            <h3 class="mt-5">Comments</h3>
+        @endif
+
         @foreach($comments as $comment)
             <div class="row mt-4 bg-white p-4">
                 <div class="col-3 d-flex align-items-center flex-column bg-light">

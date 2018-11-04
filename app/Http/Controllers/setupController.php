@@ -28,10 +28,17 @@ class setupController extends Controller
     }
 
     //load all setups for the setup showcase page
-    public function loadSetups(){
-        $setups = Setup::orderBy('upvotes', 'title')->get();
+    public function loadSetups(Request $request){
+        $title = $request->title;
+        $body = $request->body;
+
+        $setups = Setup::
+              where('title', 'LIKE', '%'.$title.'%')
+            ->where('description', 'LIKE', '%'.$body.'%')
+            ->where('is_active', '=', '1')->orderBy('upvotes', 'title')->get();
 
         return view('setup.setups', compact('setups'));
+//
     }
 
     //load single setups for setup detail page
